@@ -69,6 +69,12 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
+  void onDeleteTask(index) {
+    setState(() {
+      _registeredTasks.removeAt(index);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final List<Task> filteredTasks = _getFilteredTasks();
@@ -78,7 +84,10 @@ class _MyAppState extends State<MyApp> {
     );
 
     if (filteredTasks.isNotEmpty) {
-      mainContent = TaskList(tasks: filteredTasks);
+      mainContent = TaskList(
+        tasks: filteredTasks,
+        onDeleteTask: onDeleteTask,
+      );
     }
 
     return MaterialApp(
