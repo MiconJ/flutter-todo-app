@@ -7,8 +7,9 @@ class TaskItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Card(
+      margin: const EdgeInsets.symmetric(
+          vertical: 8, horizontal: 16),
       child: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 20,
@@ -24,9 +25,7 @@ class TaskItem extends StatelessWidget {
                 fontWeight: FontWeight.w400,
               ),
             ),
-            const SizedBox(
-              height: 4,
-            ),
+            const SizedBox(height: 4),
             Text(
               task.taskCategory.toString(),
               style: const TextStyle(

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:todo_app/models/task.dart';
-import 'package:todo_app/task_item.dart'; // Giả sử bạn có một widget TaskItem
+import 'package:todo_app/widgets/task_item.dart';
 
 class TaskList extends StatelessWidget {
-  final List<Task> tasks; // Thêm từ khóa final
+  final List<Task> tasks;
 
   TaskList({required this.tasks});
 
@@ -14,10 +14,10 @@ class TaskList extends StatelessWidget {
       itemBuilder: (ctx, index) => Dismissible(
         background: Container(
           color: Theme.of(context).colorScheme.error.withOpacity(0.15),
-          margin: const EdgeInsets.all(4), // Thêm const cho EdgeInsets
+          margin: const EdgeInsets.all(4),
         ),
-        key: ValueKey(tasks[index].id), // Giả sử Task có thuộc tính id
-        direction: DismissDirection.endToStart, // Định hướng xóa
+        key: ValueKey(tasks[index].id),
+        direction: DismissDirection.endToStart,
         onDismissed: (direction) {
           // Xử lý xóa nhiệm vụ
           // Ví dụ: bạn có thể gọi hàm để xóa nhiệm vụ khỏi danh sách

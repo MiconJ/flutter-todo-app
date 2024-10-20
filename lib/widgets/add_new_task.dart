@@ -14,14 +14,12 @@ class AddNewTask extends StatefulWidget {
 
 class _AddNewTaskState extends State<AddNewTask> {
   _submitNewTask() {
-    // In ra thông tin nhiệm vụ
     print('Task Title: $_taskTitle');
     print('Start Date: $_startSelectedDate');
     print('End Date: $_endSelectedDate');
     print('Category: $_selectedCategory');
     print('Description: $_taskDescription');
 
-    // Kiểm tra tiêu đề nhiệm vụ
     if (_taskTitle.trim().isEmpty) {
       return showDialog(
         context: context,
@@ -32,7 +30,7 @@ class _AddNewTaskState extends State<AddNewTask> {
           actions: [
             TextButton(
               onPressed: () {
-                Navigator.of(ctx).pop(); // Đóng dialog
+                Navigator.of(ctx).pop();
               },
               child: const Text('Close'),
             ),
@@ -41,7 +39,6 @@ class _AddNewTaskState extends State<AddNewTask> {
       );
     }
 
-    // Kiểm tra ngày kết thúc
     if (_endSelectedDate == null) {
       return showDialog(
         context: context,
@@ -51,7 +48,7 @@ class _AddNewTaskState extends State<AddNewTask> {
           actions: [
             TextButton(
               onPressed: () {
-                Navigator.of(ctx).pop(); // Đóng dialog
+                Navigator.of(ctx).pop();
               },
               child: const Text('Close'),
             ),
@@ -60,7 +57,6 @@ class _AddNewTaskState extends State<AddNewTask> {
       );
     }
 
-    // Thêm nhiệm vụ
     widget.onAddTask(Task(
       taskTitle: _taskTitle,
       startDate: _startSelectedDate,
@@ -79,7 +75,7 @@ class _AddNewTaskState extends State<AddNewTask> {
   TaskCategory _selectedCategory = TaskCategory.Other;
   final _taskTitleController = TextEditingController();
   final _taskDescriptionController =
-      TextEditingController(); // Controller cho mô tả
+      TextEditingController();
 
   void _presentStartDatePicker() async {
     final now = DateTime.now();
@@ -160,11 +156,10 @@ class _AddNewTaskState extends State<AddNewTask> {
                   Text(_startSelectedDate == null
                       ? 'No selected start date'
                       : '${_startSelectedDate!.toLocal()}'
-                          .split(' ')[0]), // Hiển thị ngày
+                          .split(' ')[0]),
                 ],
               ),
-              const SizedBox(width: 20), // Khoảng cách giữa Start và End Date
-              // End Date
+              const SizedBox(width: 20), 
               Column(
                 children: [
                   IconButton(
@@ -174,7 +169,7 @@ class _AddNewTaskState extends State<AddNewTask> {
                   Text(_endSelectedDate == null
                       ? 'No selected end date'
                       : '${_endSelectedDate!.toLocal()}'
-                          .split(' ')[0]), // Hiển thị ngày
+                          .split(' ')[0]), 
                 ],
               ),
             ],
