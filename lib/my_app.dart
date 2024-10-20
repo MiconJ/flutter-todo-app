@@ -113,15 +113,17 @@ class _MyAppState extends State<MyApp> {
                       decoration: InputDecoration(
                         border: const OutlineInputBorder(),
                         labelText: 'Search here',
-                        suffixIcon: IconButton(
-                          icon: const Icon(Icons.close),
-                          onPressed: () {
-                            setState(() {
-                              _searchKeyWord = '';
-                              searchKWEditingController.clear();
-                            });
-                          },
-                        ),
+                        suffixIcon: _searchKeyWord.isNotEmpty
+                            ? IconButton(
+                                icon: const Icon(Icons.close),
+                                onPressed: () {
+                                  setState(() {
+                                    _searchKeyWord = '';
+                                    searchKWEditingController.clear();
+                                  });
+                                },
+                              )
+                            : null,
                       ),
                       controller: searchKWEditingController,
                       onChanged: (text) {
